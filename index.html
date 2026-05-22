@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wladislaw Walz — Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a0f; --bg2: #111118; --bg3: #18181f;
+      --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.13);
+      --text: #f0f0f5; --muted: #8888a0;
+      --accent: #7c6deb; --accent2: #a88beb; --accent-glow: rgba(124,109,235,0.15);
+      --green: #3dd68c; --amber: #f0c050; --coral: #f0784a;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Syne', sans-serif; line-height: 1.6; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.25rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px); background: rgba(10,10,15,0.7);
+    }
+    .nav-logo { font-family: 'DM Mono', monospace; font-size: 0.95rem; color: var(--accent2); letter-spacing: 0.04em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.82rem; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 2rem 4rem; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; pointer-events: none; }
+    .hero-bg::before { content: ''; position: absolute; top: -10%; left: -20%; width: 70%; height: 70%; background: radial-gradient(ellipse, rgba(124,109,235,0.12) 0%, transparent 65%); }
+    .hero-bg::after { content: ''; position: absolute; bottom: 10%; right: -10%; width: 40%; height: 40%; background: radial-gradient(ellipse, rgba(168,139,235,0.08) 0%, transparent 65%); }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%); }
+    .hero-inner { max-width: 900px; margin: 0 auto; width: 100%; position: relative; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; }
+    .hero-tag::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+    h1 { font-size: clamp(3rem, 8vw, 6.5rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+    h1 .name-first { color: var(--text); display: block; }
+    h1 .name-last { display: block; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-desc { font-size: 1.15rem; color: var(--muted); max-width: 480px; margin-bottom: 2.5rem; font-weight: 400; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { padding: 0.75rem 1.75rem; background: var(--accent); color: #fff; border: none; border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 600; letter-spacing: 0.04em; text-decoration: none; cursor: pointer; transition: opacity 0.2s, transform 0.15s; display: inline-block; }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+    .btn-ghost { padding: 0.75rem 1.75rem; background: transparent; color: var(--text); border: 1px solid var(--border2); border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 600; letter-spacing: 0.04em; text-decoration: none; cursor: pointer; transition: border-color 0.2s, transform 0.15s, background 0.2s; display: inline-block; }
+    .btn-ghost:hover { border-color: var(--accent); background: var(--accent-glow); transform: translateY(-1px); }
+
+    /* TICKER */
+    .ticker-wrap { padding: 1.5rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; margin: 0 -2rem; position: relative; }
+    .ticker-wrap::before, .ticker-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; }
+    .ticker-wrap::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
+    .ticker-wrap::after { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
+    .ticker { display: flex; gap: 2rem; animation: ticker 22s linear infinite; width: max-content; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .ticker-item { display: flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
+    .ticker-item .dot { width: 4px; height: 4px; background: var(--accent); border-radius: 50%; }
+
+    /* SECTIONS */
+    section { max-width: 900px; margin: 0 auto; padding: 6rem 2rem; }
+    .section-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    h2 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -0.03em; color: var(--text); margin-bottom: 3rem; }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 1rem; font-weight: 400; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--text); font-weight: 600; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+    .stat-number { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin-bottom: 0.25rem; }
+    .stat-label { font-size: 0.78rem; color: var(--muted); font-family: 'DM Mono', monospace; }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.75rem; }
+    .skill-pill { display: flex; align-items: center; gap: 0.6rem; padding: 0.65rem 1rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--text); transition: border-color 0.2s, background 0.2s; }
+    .skill-pill:hover { border-color: var(--accent); background: var(--accent-glow); }
+    .skill-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .lang { background: var(--accent); }
+    .tool { background: var(--green); }
+    .concept { background: var(--amber); }
+
+    /* ─── PROJECT SHOWCASE ─────────────────────────── */
+    .showcase {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    /* The track holds all slides side by side */
+    .showcase-track {
+      display: flex;
+      transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+      will-change: transform;
+    }
+
+    /* Each slide */
+    .slide {
+      min-width: 100%;
+      padding: 0 0 0.5rem;
+    }
+
+    /* Project card inside each slide */
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.25rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .slide.active .project-card::before { opacity: 1; }
+
+    .slide-0 .project-card::before { background: linear-gradient(90deg, #7c6deb, #a88beb); }
+    .slide-1 .project-card::before { background: linear-gradient(90deg, #3dd68c, #7c6deb); }
+    .slide-2 .project-card::before { background: linear-gradient(90deg, #f0c050, #f0784a); }
+
+    /* Big decorative project number */
+    .proj-number {
+      position: absolute;
+      top: 1rem; right: 1.75rem;
+      font-size: 7rem;
+      font-weight: 800;
+      font-family: 'Syne', sans-serif;
+      color: rgba(255,255,255,0.03);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; }
+    .project-emoji { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+    .project-name { font-size: 1.5rem; font-weight: 700; color: var(--text); }
+    .project-link { display: flex; align-items: center; gap: 0.35rem; font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--accent); text-decoration: none; white-space: nowrap; transition: opacity 0.2s; padding: 0.4rem 0.8rem; border: 1px solid rgba(124,109,235,0.3); border-radius: 6px; }
+    .project-link:hover { opacity: 0.7; }
+    .project-link svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .project-desc { color: var(--muted); font-size: 0.92rem; font-weight: 400; margin-bottom: 1.5rem; line-height: 1.75; flex: 1; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .tag { padding: 0.3rem 0.65rem; background: rgba(124,109,235,0.1); border: 1px solid rgba(124,109,235,0.25); border-radius: 4px; font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--accent2); }
+    .tag-green { background: rgba(61,214,140,0.08); border-color: rgba(61,214,140,0.25); color: #3dd68c; }
+    .tag-amber { background: rgba(240,192,80,0.08); border-color: rgba(240,192,80,0.25); color: var(--amber); }
+
+    .project-features {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem 1.5rem;
+    }
+    .feature-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; color: var(--muted); }
+    .feature-arrow { color: var(--accent); font-weight: 700; font-size: 0.7rem; flex-shrink: 0; }
+
+    /* ─── CAROUSEL CONTROLS ─────────────────────────── */
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1.75rem;
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .dot-btn {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--border2);
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s, width 0.3s;
+      padding: 0;
+    }
+    .dot-btn.active {
+      background: var(--accent);
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    .carousel-arrows {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .arrow-btn {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border2);
+      background: var(--bg2);
+      color: var(--text);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      flex-shrink: 0;
+    }
+    .arrow-btn:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-glow); transform: scale(1.05); }
+    .arrow-btn:disabled { opacity: 0.25; cursor: default; }
+    .arrow-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .carousel-counter {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .carousel-counter span { color: var(--accent); }
+
+    /* Progress bar */
+    .carousel-progress {
+      height: 2px;
+      background: var(--border);
+      border-radius: 1px;
+      margin-bottom: 1.25rem;
+      overflow: hidden;
+    }
+    .carousel-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 1px;
+      transition: width 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    /* Keyboard hint */
+    .keyboard-hint {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: rgba(136,136,160,0.5);
+      text-align: center;
+      margin-top: 0.75rem;
+    }
+    .key-badge {
+      display: inline-block;
+      padding: 0.1rem 0.4rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 3px;
+      font-size: 0.65rem;
+    }
+
+    /* TIMELINE */
+    .timeline { display: flex; flex-direction: column; gap: 0; position: relative; padding-left: 1.5rem; }
+    .timeline::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: var(--border2); }
+
+    .timeline-item { display: flex; gap: 1.25rem; align-items: flex-start; padding-bottom: 1.75rem; position: relative; }
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; margin-left: -1.5rem; border: 2px solid var(--bg); position: relative; z-index: 1; }
+    .tl-accent { background: var(--accent); box-shadow: 0 0 8px rgba(124,109,235,0.5); }
+    .tl-green  { background: var(--green); }
+    .tl-muted  { background: var(--border2); }
+
+    .timeline-content { flex: 1; }
+    .tl-date    { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent); margin-bottom: 0.2rem; }
+    .tl-title   { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 0.15rem; }
+    .tl-company { font-size: 0.82rem; color: var(--muted); }
+
+    /* CONTACT */
+    .contact-wrapper { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 3rem; text-align: center; position: relative; overflow: hidden; }
+    .contact-wrapper::before { content: ''; position: absolute; top: -60%; left: 50%; transform: translateX(-50%); width: 60%; height: 120%; background: radial-gradient(ellipse, rgba(124,109,235,0.1) 0%, transparent 60%); pointer-events: none; }
+    .contact-wrapper h2 { margin-bottom: 1rem; }
+    .contact-desc { color: var(--muted); margin-bottom: 2rem; max-width: 400px; margin-left: auto; margin-right: auto; font-size: 0.95rem; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* FADE IN */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      nav { padding: 1rem; }
+      .nav-links { gap: 1rem; }
+      .hero { padding: 6rem 1.25rem 3rem; }
+      section { padding: 4rem 1.25rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .project-features { grid-template-columns: 1fr; }
+      .contact-wrapper { padding: 2rem 1.5rem; }
+      .project-card { padding: 1.5rem; min-height: auto; }
+      .proj-number { font-size: 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">WladTheBoy</span>
+    <ul class="nav-links">
+      <li><a href="#about">Über mich</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projekte</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div class="hero-tag">verfügbar für Projekte</div>
+      <h1>
+        <span class="name-first">Wladislaw</span>
+        <span class="name-last">Walz</span>
+      </h1>
+      <p class="hero-desc">
+        22-jähriger Softwareentwickler aus Böblingen. Full-Stack-Kenntnisse von Java &amp; C bis Python, Web-Dev und Datenbanken — mit echtem Praktikums-Erfahrung in der Industrie.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">Projekte ansehen</a>
+        <a href="https://github.com/WladTheBoy" target="_blank" class="btn-ghost">GitHub öffnen ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span class="ticker-item"><span class="dot"></span>Java</span>
+      <span class="ticker-item"><span class="dot"></span>C#</span>
+      <span class="ticker-item"><span class="dot"></span>C</span>
+      <span class="ticker-item"><span class="dot"></span>Python</span>
+      <span class="ticker-item"><span class="dot"></span>JavaScript</span>
+      <span class="ticker-item"><span class="dot"></span>JSP</span>
+      <span class="ticker-item"><span class="dot"></span>SQL</span>
+      <span class="ticker-item"><span class="dot"></span>PostgreSQL</span>
+      <span class="ticker-item"><span class="dot"></span>Docker</span>
+      <span class="ticker-item"><span class="dot"></span>Jira</span>
+      <span class="ticker-item"><span class="dot"></span>Chrome Extensions</span>
+      <span class="ticker-item"><span class="dot"></span>OpenCV</span>
+      <span class="ticker-item"><span class="dot"></span>MediaPipe</span>
+      <span class="ticker-item"><span class="dot"></span>JavaFX</span>
+      <span class="ticker-item"><span class="dot"></span>Maven</span>
+      <span class="ticker-item"><span class="dot"></span>Git &amp; GitHub</span>
+      <span class="ticker-item"><span class="dot"></span>Java</span>
+      <span class="ticker-item"><span class="dot"></span>C#</span>
+      <span class="ticker-item"><span class="dot"></span>C</span>
+      <span class="ticker-item"><span class="dot"></span>Python</span>
+      <span class="ticker-item"><span class="dot"></span>JavaScript</span>
+      <span class="ticker-item"><span class="dot"></span>JSP</span>
+      <span class="ticker-item"><span class="dot"></span>SQL</span>
+      <span class="ticker-item"><span class="dot"></span>PostgreSQL</span>
+      <span class="ticker-item"><span class="dot"></span>Docker</span>
+      <span class="ticker-item"><span class="dot"></span>Jira</span>
+      <span class="ticker-item"><span class="dot"></span>Chrome Extensions</span>
+      <span class="ticker-item"><span class="dot"></span>OpenCV</span>
+      <span class="ticker-item"><span class="dot"></span>MediaPipe</span>
+      <span class="ticker-item"><span class="dot"></span>JavaFX</span>
+      <span class="ticker-item"><span class="dot"></span>Maven</span>
+      <span class="ticker-item"><span class="dot"></span>Git &amp; GitHub</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label fade-in">// Über mich</p>
+    <h2 class="fade-in">Wer ich bin</h2>
+    <div class="about-grid fade-in">
+      <div class="about-text">
+        <p>Ich bin <strong>Wladislaw Walz</strong>, geboren 2004 in Kasachstan, aufgewachsen in Böblingen. Deutsch ist meine Alltagssprache, Russisch meine Muttersprache — Code ist meine dritte.</p>
+        <p>Mein Stack ist breit: von <strong>Java, C#, C und Python</strong> über <strong>Web-Entwicklung</strong> (HTML5, CSS, JS, JSP) bis zu <strong>Datenbanken</strong> (SQL, PostgreSQL) und DevOps-Tools wie Docker und Jira.</p>
+        <p>Aktuell in Ausbildung an der <strong>Gottlieb-Daimler Schule 2 (ADV)</strong> in Böblingen — mit echtem Praxisbezug durch Praktika in der Industrie.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card"><div class="stat-number">10+</div><div class="stat-label">Technologien</div></div>
+        <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Projekte</div></div>
+        <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Sprachen</div></div>
+        <div class="stat-card"><div class="stat-number">DE</div><div class="stat-label">Böblingen</div></div>
+      </div>
+    </div>
+
+    <!-- Experience Timeline -->
+    <div class="fade-in" style="margin-top:3.5rem;">
+      <p class="section-label" style="margin-bottom:1.5rem;">// Erfahrung</p>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot tl-accent"></div>
+          <div class="timeline-content">
+            <div class="tl-date">Aug. 2024</div>
+            <div class="tl-title">Praktikum Software-Entwickler</div>
+            <div class="tl-company">dibuco GmbH — Leinfelden-Echterdingen</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot tl-green"></div>
+          <div class="timeline-content">
+            <div class="tl-date">Jun. 2023</div>
+            <div class="tl-title">Praktikum Elektrotechniker (2)</div>
+            <div class="tl-company">ORT Elektrotechnik, Altdorf</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot tl-green"></div>
+          <div class="timeline-content">
+            <div class="tl-date">Mrz. 2021</div>
+            <div class="tl-title">Praktikum Elektrotechniker (1)</div>
+            <div class="tl-company">ORT Elektrotechnik, Altdorf</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot tl-muted"></div>
+          <div class="timeline-content">
+            <div class="tl-date">Feb. 2020</div>
+            <div class="tl-title">Schulpraktikum Kfz-Mechatroniker</div>
+            <div class="tl-company">Abfallwirtschaft Böblingen</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label fade-in">// Tech Stack</p>
+    <h2 class="fade-in">Skills &amp; Tools</h2>
+
+    <div class="fade-in" style="margin-bottom:2rem;">
+      <p style="font-family:'DM Mono',monospace; font-size:0.72rem; color:var(--accent); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.75rem;">Programmiersprachen</p>
+      <div class="skills-grid">
+        <div class="skill-pill"><span class="skill-dot lang"></span>Java</div>
+        <div class="skill-pill"><span class="skill-dot lang"></span>C#</div>
+        <div class="skill-pill"><span class="skill-dot lang"></span>C</div>
+        <div class="skill-pill"><span class="skill-dot lang"></span>Python</div>
+        <div class="skill-pill"><span class="skill-dot lang"></span>JavaScript</div>
+        <div class="skill-pill"><span class="skill-dot lang"></span>JSP</div>
+        <div class="skill-pill"><span class="skill-dot lang"></span>HTML5 &amp; CSS</div>
+        <div class="skill-pill"><span class="skill-dot lang"></span>SQL</div>
+      </div>
+    </div>
+
+    <div class="fade-in" style="margin-bottom:2rem;">
+      <p style="font-family:'DM Mono',monospace; font-size:0.72rem; color:var(--green); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.75rem;">Frameworks &amp; Tools</p>
+      <div class="skills-grid">
+        <div class="skill-pill"><span class="skill-dot tool"></span>PostgreSQL</div>
+        <div class="skill-pill"><span class="skill-dot tool"></span>Docker</div>
+        <div class="skill-pill"><span class="skill-dot tool"></span>Git &amp; GitHub</div>
+        <div class="skill-pill"><span class="skill-dot tool"></span>Jira</div>
+        <div class="skill-pill"><span class="skill-dot tool"></span>Maven</div>
+        <div class="skill-pill"><span class="skill-dot tool"></span>JavaFX</div>
+        <div class="skill-pill"><span class="skill-dot tool"></span>OpenCV</div>
+        <div class="skill-pill"><span class="skill-dot tool"></span>MediaPipe</div>
+        <div class="skill-pill"><span class="skill-dot tool"></span>Chrome API</div>
+        <div class="skill-pill"><span class="skill-dot tool"></span>MS Office</div>
+        <div class="skill-pill"><span class="skill-dot tool"></span>Adobe</div>
+      </div>
+    </div>
+
+    <div class="fade-in">
+      <p style="font-family:'DM Mono',monospace; font-size:0.72rem; color:var(--amber); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.75rem;">Sprachen &amp; Soft Skills</p>
+      <div class="skills-grid">
+        <div class="skill-pill"><span class="skill-dot concept"></span>Deutsch</div>
+        <div class="skill-pill"><span class="skill-dot concept"></span>Russisch</div>
+        <div class="skill-pill"><span class="skill-dot concept"></span>Englisch</div>
+        <div class="skill-pill"><span class="skill-dot concept"></span>OOP</div>
+        <div class="skill-pill"><span class="skill-dot concept"></span>Modular Design</div>
+        <div class="skill-pill"><span class="skill-dot concept"></span>Computer Vision</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label fade-in">// Projekte</p>
+    <h2 class="fade-in">Was ich gebaut habe</h2>
+
+    <div class="fade-in">
+      <!-- Progress bar -->
+      <div class="carousel-progress">
+        <div class="carousel-progress-bar" id="progressBar" style="width: 33.33%"></div>
+      </div>
+
+      <!-- Slider track -->
+      <div class="showcase">
+        <div class="showcase-track" id="track">
+
+          <!-- SLIDE 0: Tab Snooze -->
+          <div class="slide slide-0 active">
+            <div class="project-card">
+              <div class="proj-number">01</div>
+              <span class="project-emoji">🌙</span>
+              <div class="project-header">
+                <div class="project-name">Tab Snooze &amp; Session Manager</div>
+                <a href="https://github.com/WladTheBoy/tab-snooze" target="_blank" class="project-link">
+                  GitHub <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                </a>
+              </div>
+              <p class="project-desc">Eine Chrome-Extension zum Schlummern von Tabs und Speichern von Tab-Sessions. Tabs bei Ablenkung kurz ausblenden und automatisch zur konfigurierten Zeit wieder öffnen — mit Erinnerungsnotizen und Wake-Benachrichtigungen.</p>
+              <div class="project-tags">
+                <span class="tag">JavaScript</span>
+                <span class="tag">Chrome Extension</span>
+                <span class="tag">Manifest V3</span>
+                <span class="tag">ES Modules</span>
+                <span class="tag">chrome.alarms</span>
+                <span class="tag">MIT</span>
+              </div>
+              <div class="project-features">
+                <span class="feature-item"><span class="feature-arrow">→</span>Tabs schlummern lassen</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>Quick-Snooze (1h / 3h / morgen)</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>Sessions speichern &amp; wiederherstellen</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>Wake-Benachrichtigungen</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 1: Air Drawing -->
+          <div class="slide slide-1">
+            <div class="project-card">
+              <div class="proj-number">02</div>
+              <span class="project-emoji">✋</span>
+              <div class="project-header">
+                <div class="project-name">Air Drawing Tool</div>
+                <a href="https://github.com/WladTheBoy/air-drawing" target="_blank" class="project-link">
+                  GitHub <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                </a>
+              </div>
+              <p class="project-desc">In der Luft zeichnen — nur mit der Webcam und dem Zeigefinger, ohne Maus oder Touchscreen. MediaPipe erkennt 21 Handpunkte in Echtzeit und übersetzt Gesten in Zeichenbefehle.</p>
+              <div class="project-tags">
+                <span class="tag tag-green">Python</span>
+                <span class="tag tag-green">OpenCV</span>
+                <span class="tag tag-green">MediaPipe</span>
+                <span class="tag tag-green">NumPy</span>
+                <span class="tag tag-green">Computer Vision</span>
+                <span class="tag tag-green">MIT</span>
+              </div>
+              <div class="project-features">
+                <span class="feature-item"><span class="feature-arrow">→</span>Echtzeit-Handtracking</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>10 Farben + Radierer</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>Gesten: zeichnen / pause / löschen</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>Zeichnung als PNG speichern</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 2: Java File Master -->
+          <div class="slide slide-2">
+            <div class="project-card">
+              <div class="proj-number">03</div>
+              <span class="project-emoji">🗂️</span>
+              <div class="project-header">
+                <div class="project-name">Java File Master (JFM)</div>
+                <a href="https://github.com/WladTheBoy/java-file-master" target="_blank" class="project-link">
+                  GitHub <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                </a>
+              </div>
+              <p class="project-desc">Modulare Desktop-Anwendung in Java: ein universeller Datei-Öffner, der je nach Dateityp automatisch das passende Modul startet — Bild-Editor, Audio-Player oder Text-Editor, alles in einem.</p>
+              <div class="project-tags">
+                <span class="tag tag-amber">Java 17+</span>
+                <span class="tag tag-amber">Swing</span>
+                <span class="tag tag-amber">JavaFX</span>
+                <span class="tag tag-amber">Maven</span>
+                <span class="tag tag-amber">RSyntaxTextArea</span>
+              </div>
+              <div class="project-features">
+                <span class="feature-item"><span class="feature-arrow">→</span>Modulare Architektur (OCP)</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>MiniPaint — Bild-Editor</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>Audio-Player (WAV &amp; MP3)</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>Syntax-Highlighting Editor</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /track -->
+      </div><!-- /showcase -->
+
+      <!-- Controls -->
+      <div class="carousel-controls">
+        <div class="carousel-dots" id="dots">
+          <button class="dot-btn active" data-idx="0" aria-label="Projekt 1"></button>
+          <button class="dot-btn" data-idx="1" aria-label="Projekt 2"></button>
+          <button class="dot-btn" data-idx="2" aria-label="Projekt 3"></button>
+        </div>
+
+        <div class="carousel-arrows">
+          <span class="carousel-counter"><span id="currentNum">1</span> / 3</span>
+          <button class="arrow-btn" id="prevBtn" aria-label="Vorheriges Projekt" disabled>
+            <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="arrow-btn" id="nextBtn" aria-label="Nächstes Projekt">
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <p class="keyboard-hint">
+        <span class="key-badge">←</span> <span class="key-badge">→</span> Pfeiltasten navigieren auch
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-wrapper fade-in">
+      <p class="section-label" style="margin-bottom:1rem;">// Kontakt</p>
+      <h2 style="margin-bottom:0.75rem;">Lass uns reden</h2>
+      <p class="contact-desc">Offen für Projekte, Kollaborationen oder einfach einen Austausch über Code. Schreib mir per Mail oder GitHub.</p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="https://github.com/WladTheBoy" target="_blank" class="btn-primary">GitHub besuchen</a>
+        <a href="mailto:wladislaw.walz2004@gmail.com" class="btn-ghost">E-Mail schreiben</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Made by <a href="https://github.com/WladTheBoy">Wladislaw Walz</a> · 2026</p>
+  </footer>
+
+  <script>
+    // ─── INTERSECTION OBSERVER (fade-ins) ───────────────
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ─── CAROUSEL ────────────────────────────────────────
+    const track    = document.getElementById('track');
+    const slides   = Array.from(document.querySelectorAll('.slide'));
+    const dots     = Array.from(document.querySelectorAll('.dot-btn'));
+    const prevBtn  = document.getElementById('prevBtn');
+    const nextBtn  = document.getElementById('nextBtn');
+    const counter  = document.getElementById('currentNum');
+    const progress = document.getElementById('progressBar');
+    const total    = slides.length;
+    let current    = 0;
+    let isAnimating = false;
+
+    function goTo(idx, direction) {
+      if (isAnimating || idx === current) return;
+      isAnimating = true;
+
+      const prev = current;
+      current = idx;
+
+      // Update track position
+      track.style.transform = `translateX(-${current * 100}%)`;
+
+      // Update slide active class
+      slides[prev].classList.remove('active');
+      slides[current].classList.add('active');
+
+      // Update dots
+      dots[prev].classList.remove('active');
+      dots[current].classList.add('active');
+
+      // Update counter
+      counter.textContent = current + 1;
+
+      // Update progress bar
+      progress.style.width = `${((current + 1) / total) * 100}%`;
+
+      // Update button states
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === total - 1;
+
+      // Animate card content (stagger children)
+      const card = slides[current].querySelector('.project-card');
+      card.style.opacity = '0';
+      card.style.transform = `translateY(12px)`;
+      requestAnimationFrame(() => {
+        card.style.transition = 'opacity 0.45s ease 0.25s, transform 0.45s ease 0.25s';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      });
+
+      setTimeout(() => {
+        isAnimating = false;
+        card.style.transition = '';
+      }, 750);
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1, -1));
+    nextBtn.addEventListener('click', () => goTo(current + 1, 1));
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => goTo(parseInt(dot.dataset.idx), parseInt(dot.dataset.idx) > current ? 1 : -1));
+    });
+
+    // Keyboard nav
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  goTo(Math.max(0, current - 1), -1);
+      if (e.key === 'ArrowRight') goTo(Math.min(total - 1, current + 1), 1);
+    });
+
+    // Swipe / drag support
+    let startX = 0, dragging = false;
+    const showcase = document.querySelector('.showcase');
+    showcase.addEventListener('pointerdown', e => { startX = e.clientX; dragging = true; });
+    showcase.addEventListener('pointerup', e => {
+      if (!dragging) return;
+      dragging = false;
+      const diff = e.clientX - startX;
+      if (diff < -50) goTo(Math.min(total - 1, current + 1), 1);
+      if (diff > 50)  goTo(Math.max(0, current - 1), -1);
+    });
+    showcase.addEventListener('pointerleave', () => { dragging = false; });
+  </script>
+</body>
+</html>
