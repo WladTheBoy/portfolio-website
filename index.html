@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,10 +10,10 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #0a0a0f; --bg2: #111118; --bg3: #18181f;
-      --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.13);
-      --text: #f0f0f5; --muted: #8888a0;
-      --accent: #7c6deb; --accent2: #a88beb; --accent-glow: rgba(124,109,235,0.15);
+      --bg: #07090f; --bg2: #0d1120; --bg3: #131929;
+      --border: rgba(74,144,226,0.1); --border2: rgba(74,144,226,0.2);
+      --text: #e8eef8; --muted: #7a90b8;
+      --accent: #4a90e2; --accent2: #6aaff0; --accent-glow: rgba(74,144,226,0.13);
       --green: #3dd68c; --amber: #f0c050; --coral: #f0784a;
     }
     html { scroll-behavior: smooth; }
@@ -38,8 +38,8 @@
     /* HERO */
     .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 2rem 4rem; position: relative; overflow: hidden; }
     .hero-bg { position: absolute; inset: 0; pointer-events: none; }
-    .hero-bg::before { content: ''; position: absolute; top: -10%; left: -20%; width: 70%; height: 70%; background: radial-gradient(ellipse, rgba(124,109,235,0.12) 0%, transparent 65%); }
-    .hero-bg::after { content: ''; position: absolute; bottom: 10%; right: -10%; width: 40%; height: 40%; background: radial-gradient(ellipse, rgba(168,139,235,0.08) 0%, transparent 65%); }
+    .hero-bg::before { content: ''; position: absolute; top: -10%; left: -20%; width: 70%; height: 70%; background: radial-gradient(ellipse, rgba(74,144,226,0.1) 0%, transparent 65%); }
+    .hero-bg::after { content: ''; position: absolute; bottom: 10%; right: -10%; width: 40%; height: 40%; background: radial-gradient(ellipse, rgba(106,175,240,0.07) 0%, transparent 65%); }
     .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%); }
     .hero-inner { max-width: 900px; margin: 0 auto; width: 100%; position: relative; }
     .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; }
@@ -132,8 +132,8 @@
     }
     .slide.active .project-card::before { opacity: 1; }
 
-    .slide-0 .project-card::before { background: linear-gradient(90deg, #7c6deb, #a88beb); }
-    .slide-1 .project-card::before { background: linear-gradient(90deg, #3dd68c, #7c6deb); }
+    .slide-0 .project-card::before { background: linear-gradient(90deg, #4a90e2, #6aaff0); }
+    .slide-1 .project-card::before { background: linear-gradient(90deg, #3dd68c, #4a90e2); }
     .slide-2 .project-card::before { background: linear-gradient(90deg, #f0c050, #f0784a); }
 
     /* Big decorative project number */
@@ -152,12 +152,12 @@
     .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; }
     .project-emoji { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
     .project-name { font-size: 1.5rem; font-weight: 700; color: var(--text); }
-    .project-link { display: flex; align-items: center; gap: 0.35rem; font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--accent); text-decoration: none; white-space: nowrap; transition: opacity 0.2s; padding: 0.4rem 0.8rem; border: 1px solid rgba(124,109,235,0.3); border-radius: 6px; }
+    .project-link { display: flex; align-items: center; gap: 0.35rem; font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--accent); text-decoration: none; white-space: nowrap; transition: opacity 0.2s; padding: 0.4rem 0.8rem; border: 1px solid rgba(74,144,226,0.3); border-radius: 6px; }
     .project-link:hover { opacity: 0.7; }
     .project-link svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .project-desc { color: var(--muted); font-size: 0.92rem; font-weight: 400; margin-bottom: 1.5rem; line-height: 1.75; flex: 1; }
     .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
-    .tag { padding: 0.3rem 0.65rem; background: rgba(124,109,235,0.1); border: 1px solid rgba(124,109,235,0.25); border-radius: 4px; font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--accent2); }
+    .tag { padding: 0.3rem 0.65rem; background: rgba(74,144,226,0.1); border: 1px solid rgba(74,144,226,0.25); border-radius: 4px; font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--accent2); }
     .tag-green { background: rgba(61,214,140,0.08); border-color: rgba(61,214,140,0.25); color: #3dd68c; }
     .tag-amber { background: rgba(240,192,80,0.08); border-color: rgba(240,192,80,0.25); color: var(--amber); }
 
@@ -263,7 +263,7 @@
     .timeline-item:last-child { padding-bottom: 0; }
 
     .timeline-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; margin-left: -1.5rem; border: 2px solid var(--bg); position: relative; z-index: 1; }
-    .tl-accent { background: var(--accent); box-shadow: 0 0 8px rgba(124,109,235,0.5); }
+    .tl-accent { background: var(--accent); box-shadow: 0 0 8px rgba(74,144,226,0.5); }
     .tl-green  { background: var(--green); }
     .tl-muted  { background: var(--border2); }
 
@@ -274,7 +274,7 @@
 
     /* CONTACT */
     .contact-wrapper { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 3rem; text-align: center; position: relative; overflow: hidden; }
-    .contact-wrapper::before { content: ''; position: absolute; top: -60%; left: 50%; transform: translateX(-50%); width: 60%; height: 120%; background: radial-gradient(ellipse, rgba(124,109,235,0.1) 0%, transparent 60%); pointer-events: none; }
+    .contact-wrapper::before { content: ''; position: absolute; top: -60%; left: 50%; transform: translateX(-50%); width: 60%; height: 120%; background: radial-gradient(ellipse, rgba(74,144,226,0.08) 0%, transparent 60%); pointer-events: none; }
     .contact-wrapper h2 { margin-bottom: 1rem; }
     .contact-desc { color: var(--muted); margin-bottom: 2rem; max-width: 400px; margin-left: auto; margin-right: auto; font-size: 0.95rem; }
 
@@ -303,12 +303,12 @@
 <body>
 
   <nav>
-    <span class="nav-logo">WladTheBoy</span>
+   
     <ul class="nav-links">
-      <li><a href="#about">Über mich</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projekte</a></li>
-      <li><a href="#contact">Kontakt</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
@@ -317,17 +317,18 @@
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
     <div class="hero-inner">
-      <div class="hero-tag">verfügbar für Projekte</div>
+      <div class="hero-tag">available for projects</div>
+    
       <h1>
         <span class="name-first">Wladislaw</span>
         <span class="name-last">Walz</span>
       </h1>
       <p class="hero-desc">
-        22-jähriger Softwareentwickler aus Böblingen. Full-Stack-Kenntnisse von Java &amp; C bis Python, Web-Dev und Datenbanken — mit echtem Praktikums-Erfahrung in der Industrie.
+        22-year-old software developer from Böblingen, Germany. Full-stack skills ranging from Java &amp; C to Python, web development and databases — with real-world industry experience.
       </p>
       <div class="hero-actions">
-        <a href="#projects" class="btn-primary">Projekte ansehen</a>
-        <a href="https://github.com/WladTheBoy" target="_blank" class="btn-ghost">GitHub öffnen ↗</a>
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="https://github.com/WladTheBoy" target="_blank" class="btn-ghost">Open GitHub ↗</a>
       </div>
     </div>
   </header>
@@ -372,32 +373,32 @@
 
   <!-- ABOUT -->
   <section id="about">
-    <p class="section-label fade-in">// Über mich</p>
-    <h2 class="fade-in">Wer ich bin</h2>
+    <p class="section-label fade-in">// About me</p>
+    <h2 class="fade-in">Who I am</h2>
     <div class="about-grid fade-in">
       <div class="about-text">
-        <p>Ich bin <strong>Wladislaw Walz</strong>, geboren 2004 in Kasachstan, aufgewachsen in Böblingen. Deutsch ist meine Alltagssprache, Russisch meine Muttersprache — Code ist meine dritte.</p>
-        <p>Mein Stack ist breit: von <strong>Java, C#, C und Python</strong> über <strong>Web-Entwicklung</strong> (HTML5, CSS, JS, JSP) bis zu <strong>Datenbanken</strong> (SQL, PostgreSQL) und DevOps-Tools wie Docker und Jira.</p>
-        <p>Aktuell in Ausbildung an der <strong>Gottlieb-Daimler Schule 2 (ADV)</strong> in Böblingen — mit echtem Praxisbezug durch Praktika in der Industrie.</p>
+        <p>I'm <strong>Wladislaw Walz</strong>, born in 2004 in Kazakhstan, raised in Böblingen, Germany. German is my everyday language, Russian my mother tongue — code is my third.</p>
+        <p>My stack is broad: from <strong>Java, C#, C and Python</strong> to <strong>web development</strong> (HTML5, CSS, JS, JSP), <strong>databases</strong> (SQL, PostgreSQL) and DevOps tools like Docker and Jira.</p>
+        <p>Currently studying at <strong>Gottlieb-Daimler Schule 2 (ADV)</strong> in Böblingen — with hands-on experience from industry internships.</p>
       </div>
       <div class="about-stats">
-        <div class="stat-card"><div class="stat-number">10+</div><div class="stat-label">Technologien</div></div>
-        <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Projekte</div></div>
-        <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Sprachen</div></div>
+        <div class="stat-card"><div class="stat-number">10+</div><div class="stat-label">Technologies</div></div>
+        <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Projects</div></div>
+        <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Languages</div></div>
         <div class="stat-card"><div class="stat-number">DE</div><div class="stat-label">Böblingen</div></div>
       </div>
     </div>
 
     <!-- Experience Timeline -->
     <div class="fade-in" style="margin-top:3.5rem;">
-      <p class="section-label" style="margin-bottom:1.5rem;">// Erfahrung</p>
+      <p class="section-label" style="margin-bottom:1.5rem;">// Experience</p>
       <div class="timeline">
 
         <div class="timeline-item">
           <div class="timeline-dot tl-accent"></div>
           <div class="timeline-content">
             <div class="tl-date">Aug. 2024</div>
-            <div class="tl-title">Praktikum Software-Entwickler</div>
+            <div class="tl-title">Software Developer Internship</div>
             <div class="tl-company">dibuco GmbH — Leinfelden-Echterdingen</div>
           </div>
         </div>
@@ -406,7 +407,7 @@
           <div class="timeline-dot tl-green"></div>
           <div class="timeline-content">
             <div class="tl-date">Jun. 2023</div>
-            <div class="tl-title">Praktikum Elektrotechniker (2)</div>
+            <div class="tl-title">Electrical Engineer Internship (2)</div>
             <div class="tl-company">ORT Elektrotechnik, Altdorf</div>
           </div>
         </div>
@@ -414,8 +415,8 @@
         <div class="timeline-item">
           <div class="timeline-dot tl-green"></div>
           <div class="timeline-content">
-            <div class="tl-date">Mrz. 2021</div>
-            <div class="tl-title">Praktikum Elektrotechniker (1)</div>
+            <div class="tl-date">Mar. 2021</div>
+            <div class="tl-title">Electrical Engineer Internship (1)</div>
             <div class="tl-company">ORT Elektrotechnik, Altdorf</div>
           </div>
         </div>
@@ -424,7 +425,7 @@
           <div class="timeline-dot tl-muted"></div>
           <div class="timeline-content">
             <div class="tl-date">Feb. 2020</div>
-            <div class="tl-title">Schulpraktikum Kfz-Mechatroniker</div>
+            <div class="tl-title">School Internship — Automotive Mechatronics</div>
             <div class="tl-company">Abfallwirtschaft Böblingen</div>
           </div>
         </div>
@@ -439,7 +440,7 @@
     <h2 class="fade-in">Skills &amp; Tools</h2>
 
     <div class="fade-in" style="margin-bottom:2rem;">
-      <p style="font-family:'DM Mono',monospace; font-size:0.72rem; color:var(--accent); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.75rem;">Programmiersprachen</p>
+      <p style="font-family:'DM Mono',monospace; font-size:0.72rem; color:var(--accent); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.75rem;">Programming Languages</p>
       <div class="skills-grid">
         <div class="skill-pill"><span class="skill-dot lang"></span>Java</div>
         <div class="skill-pill"><span class="skill-dot lang"></span>C#</div>
@@ -470,11 +471,11 @@
     </div>
 
     <div class="fade-in">
-      <p style="font-family:'DM Mono',monospace; font-size:0.72rem; color:var(--amber); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.75rem;">Sprachen &amp; Soft Skills</p>
+      <p style="font-family:'DM Mono',monospace; font-size:0.72rem; color:var(--amber); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.75rem;">Languages &amp; Soft Skills</p>
       <div class="skills-grid">
-        <div class="skill-pill"><span class="skill-dot concept"></span>Deutsch</div>
-        <div class="skill-pill"><span class="skill-dot concept"></span>Russisch</div>
-        <div class="skill-pill"><span class="skill-dot concept"></span>Englisch</div>
+        <div class="skill-pill"><span class="skill-dot concept"></span>German</div>
+        <div class="skill-pill"><span class="skill-dot concept"></span>Russian</div>
+        <div class="skill-pill"><span class="skill-dot concept"></span>English</div>
         <div class="skill-pill"><span class="skill-dot concept"></span>OOP</div>
         <div class="skill-pill"><span class="skill-dot concept"></span>Modular Design</div>
         <div class="skill-pill"><span class="skill-dot concept"></span>Computer Vision</div>
@@ -484,8 +485,8 @@
 
   <!-- PROJECTS -->
   <section id="projects">
-    <p class="section-label fade-in">// Projekte</p>
-    <h2 class="fade-in">Was ich gebaut habe</h2>
+    <p class="section-label fade-in">// Projects</p>
+    <h2 class="fade-in">What I've built</h2>
 
     <div class="fade-in">
       <!-- Progress bar -->
@@ -508,7 +509,7 @@
                   GitHub <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                 </a>
               </div>
-              <p class="project-desc">Eine Chrome-Extension zum Schlummern von Tabs und Speichern von Tab-Sessions. Tabs bei Ablenkung kurz ausblenden und automatisch zur konfigurierten Zeit wieder öffnen — mit Erinnerungsnotizen und Wake-Benachrichtigungen.</p>
+              <p class="project-desc">A lightweight Chrome extension to snooze tabs and save tab sessions. Temporarily hide distracting tabs and have them reopen automatically at a scheduled time — with reminder notes and wake notifications.</p>
               <div class="project-tags">
                 <span class="tag">JavaScript</span>
                 <span class="tag">Chrome Extension</span>
@@ -518,10 +519,10 @@
                 <span class="tag">MIT</span>
               </div>
               <div class="project-features">
-                <span class="feature-item"><span class="feature-arrow">→</span>Tabs schlummern lassen</span>
-                <span class="feature-item"><span class="feature-arrow">→</span>Quick-Snooze (1h / 3h / morgen)</span>
-                <span class="feature-item"><span class="feature-arrow">→</span>Sessions speichern &amp; wiederherstellen</span>
-                <span class="feature-item"><span class="feature-arrow">→</span>Wake-Benachrichtigungen</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>Snooze tabs for later</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>Quick-snooze (1h / 3h / tomorrow)</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>Save &amp; restore sessions</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>Wake notifications</span>
               </div>
             </div>
           </div>
@@ -537,7 +538,7 @@
                   GitHub <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                 </a>
               </div>
-              <p class="project-desc">In der Luft zeichnen — nur mit der Webcam und dem Zeigefinger, ohne Maus oder Touchscreen. MediaPipe erkennt 21 Handpunkte in Echtzeit und übersetzt Gesten in Zeichenbefehle.</p>
+              <p class="project-desc">Draw in the air using only your webcam and index finger — no mouse, no touchscreen needed. MediaPipe detects 21 hand landmarks in real time and translates gestures into drawing commands.</p>
               <div class="project-tags">
                 <span class="tag tag-green">Python</span>
                 <span class="tag tag-green">OpenCV</span>
@@ -547,10 +548,10 @@
                 <span class="tag tag-green">MIT</span>
               </div>
               <div class="project-features">
-                <span class="feature-item"><span class="feature-arrow">→</span>Echtzeit-Handtracking</span>
-                <span class="feature-item"><span class="feature-arrow">→</span>10 Farben + Radierer</span>
-                <span class="feature-item"><span class="feature-arrow">→</span>Gesten: zeichnen / pause / löschen</span>
-                <span class="feature-item"><span class="feature-arrow">→</span>Zeichnung als PNG speichern</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>Real-time hand tracking</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>10 colors + eraser</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>Gestures: draw / pause / clear</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>Save drawing as PNG</span>
               </div>
             </div>
           </div>
@@ -566,7 +567,7 @@
                   GitHub <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
                 </a>
               </div>
-              <p class="project-desc">Modulare Desktop-Anwendung in Java: ein universeller Datei-Öffner, der je nach Dateityp automatisch das passende Modul startet — Bild-Editor, Audio-Player oder Text-Editor, alles in einem.</p>
+              <p class="project-desc">A modular Java desktop application — a universal file opener that automatically launches the right module depending on file type: image editor, audio player or text editor, all in one place.</p>
               <div class="project-tags">
                 <span class="tag tag-amber">Java 17+</span>
                 <span class="tag tag-amber">Swing</span>
@@ -575,10 +576,10 @@
                 <span class="tag tag-amber">RSyntaxTextArea</span>
               </div>
               <div class="project-features">
-                <span class="feature-item"><span class="feature-arrow">→</span>Modulare Architektur (OCP)</span>
-                <span class="feature-item"><span class="feature-arrow">→</span>MiniPaint — Bild-Editor</span>
-                <span class="feature-item"><span class="feature-arrow">→</span>Audio-Player (WAV &amp; MP3)</span>
-                <span class="feature-item"><span class="feature-arrow">→</span>Syntax-Highlighting Editor</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>Modular architecture (OCP)</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>MiniPaint — image editor</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>Audio player (WAV &amp; MP3)</span>
+                <span class="feature-item"><span class="feature-arrow">→</span>Syntax-highlighting editor</span>
               </div>
             </div>
           </div>
@@ -589,24 +590,24 @@
       <!-- Controls -->
       <div class="carousel-controls">
         <div class="carousel-dots" id="dots">
-          <button class="dot-btn active" data-idx="0" aria-label="Projekt 1"></button>
-          <button class="dot-btn" data-idx="1" aria-label="Projekt 2"></button>
-          <button class="dot-btn" data-idx="2" aria-label="Projekt 3"></button>
+          <button class="dot-btn active" data-idx="0" aria-label="Project 1"></button>
+          <button class="dot-btn" data-idx="1" aria-label="Project 2"></button>
+          <button class="dot-btn" data-idx="2" aria-label="Project 3"></button>
         </div>
 
         <div class="carousel-arrows">
           <span class="carousel-counter"><span id="currentNum">1</span> / 3</span>
-          <button class="arrow-btn" id="prevBtn" aria-label="Vorheriges Projekt" disabled>
+          <button class="arrow-btn" id="prevBtn" aria-label="Previous project" disabled>
             <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
           </button>
-          <button class="arrow-btn" id="nextBtn" aria-label="Nächstes Projekt">
+          <button class="arrow-btn" id="nextBtn" aria-label="Next project">
             <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
           </button>
         </div>
       </div>
 
       <p class="keyboard-hint">
-        <span class="key-badge">←</span> <span class="key-badge">→</span> Pfeiltasten navigieren auch
+        <span class="key-badge">←</span> <span class="key-badge">→</span> arrow keys also work
       </p>
     </div>
   </section>
@@ -614,12 +615,12 @@
   <!-- CONTACT -->
   <section id="contact">
     <div class="contact-wrapper fade-in">
-      <p class="section-label" style="margin-bottom:1rem;">// Kontakt</p>
-      <h2 style="margin-bottom:0.75rem;">Lass uns reden</h2>
-      <p class="contact-desc">Offen für Projekte, Kollaborationen oder einfach einen Austausch über Code. Schreib mir per Mail oder GitHub.</p>
+      <p class="section-label" style="margin-bottom:1rem;">// Contact</p>
+      <h2 style="margin-bottom:0.75rem;">Let's talk</h2>
+      <p class="contact-desc">Open to projects, collaborations or just a chat about code. Reach out via GitHub or email.</p>
       <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-        <a href="https://github.com/WladTheBoy" target="_blank" class="btn-primary">GitHub besuchen</a>
-        <a href="mailto:wladislaw.walz2004@gmail.com" class="btn-ghost">E-Mail schreiben</a>
+        <a href="https://github.com/WladTheBoy" target="_blank" class="btn-primary">Visit GitHub</a>
+        <a href="mailto:wladislaw.walz2004@gmail.com" class="btn-ghost">Send an Email</a>
       </div>
     </div>
   </section>
