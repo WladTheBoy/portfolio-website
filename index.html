@@ -54,6 +54,7 @@ details[open] summary i{transform:rotate(45deg);color:var(--or)}
 .body p{color:var(--mu);margin-bottom:1.2rem}
 .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.2rem}
 .tags span{font:500 .7rem 'JetBrains Mono',monospace;border:1px solid var(--line);padding:.25rem .6rem;border-radius:99px;color:var(--tx)}
+.st{font:500 .65rem 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,90,31,.55);color:var(--or);padding:.25rem .65rem;border-radius:99px;margin-left:.9rem;vertical-align:middle;white-space:nowrap}
 .gh{display:inline-block;color:var(--or);font-weight:500;border-bottom:1px solid currentColor}
 .art{border:1px solid var(--line);border-radius:14px;min-height:170px;background:var(--bg2);position:relative;overflow:hidden;display:grid;place-items:center}
 .art svg{width:80%;height:auto}
@@ -108,9 +109,9 @@ summary{grid-template-columns:2rem 1fr auto}.stack div,.xp>div{grid-template-col
 
 <section id="projects"><p class="mono">02 — Projects</p><div class="proj">
  <h2 class="serif rv">Selected <em>work</em></h2>
- <details open><summary><span class="mono">01</span><h3 class="serif">SowaBoard</h3><i>+</i></summary><div class="body"><div>
-  <p>A modern B2B all-in-one platform, built with data protection (GDPR) in mind, that consolidates scattered tools like Jira, Confluence, Discord and MS Teams into a single app: Kanban boards and tickets, a hierarchical wiki with rich text and Markdown, real-time team chat, and strict multi-tenant isolation enforced at the database level.</p>
-  <div class="tags"><span>React</span><span>Vite</span><span>TypeScript</span><span>Tailwind</span><span>Bun</span><span>Hono</span><span>Drizzle</span><span>PostgreSQL</span><span>Docker</span></div><p class="mono" style="margin:0">Deployable as cloud SaaS (hosted in Germany) or self-hosted</p></div>
+ <details open><summary><span class="mono">01</span><h3 class="serif">SowaBoard<span class="st">In Development</span></h3><i>+</i></summary><div class="body"><div>
+  <p>A modern B2B all-in-one platform that consolidates scattered tools like Jira, Confluence, Discord and MS Teams into a single app: Kanban boards and tickets, a hierarchical wiki with rich text and Markdown, real-time team chat, and strict multi-tenant isolation enforced at the database level.</p>
+  <div class="tags"><span>React</span><span>Vite</span><span>TypeScript</span><span>Tailwind</span><span>Bun</span><span>Hono</span><span>Drizzle</span><span>PostgreSQL</span><span>Docker</span></div><p class="mono" style="margin:0">Designed with GDPR requirements and data privacy in mind. Cloud hosting in Germany or self-hosted deployment.</p></div>
   <div class="art"><svg viewBox="0 0 200 90" fill="none" stroke="#3a88e0" stroke-width="2"><rect x="8" y="8" width="56" height="74" rx="6"/><rect x="72" y="8" width="56" height="74" rx="6"/><rect x="136" y="8" width="56" height="74" rx="6"/><rect x="14" y="18" width="44" height="14" rx="3"/><rect x="14" y="38" width="44" height="14" rx="3" stroke="#ff5a1f"/><rect x="78" y="18" width="44" height="14" rx="3"/><rect x="142" y="18" width="44" height="14" rx="3"/><rect x="142" y="38" width="44" height="14" rx="3"/></svg></div></div></details>
  <details><summary><span class="mono">02</span><h3 class="serif">Owl Synth</h3><i>+</i></summary><div class="body"><div>
   <p>A polyphonic synthesizer that runs entirely in the browser. It generates sound in real time with the Web Audio API and can be played with your computer keyboard or an on-screen piano. Each voice has two slightly detuned oscillators, a low-pass filter and an ADSR envelope, with a soft-feedback delay for a floating sound. Waveform, detune, filter, envelope and delay are adjustable live, and an oscilloscope visualizes the signal.</p>
